@@ -1,0 +1,248 @@
+/* 共通部分 */
+
+* {
+    color: black;
+}
+
+.ver-top {
+    vertical-align: top;
+}
+
+.ver-middle {
+    vertical-align: middle;
+}
+
+.none {
+    display: none;
+}
+
+.opa {
+    opacity: 0.9;
+}
+
+.rgba {
+    color: rgb(0, 0, 0);
+}
+
+.link {
+    text-decoration: none;
+}
+
+.btn {
+    color: black;
+    font-size: 13px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    background-color: #659beb;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 139, 0.815);
+}
+
+.peger {
+    color: black;
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background-color: #659beb;
+    transition: all 0.3s;
+}
+
+.peger:hover {
+    background-color: rgba(0, 0, 139, 0.815);
+}
+
+/* サイト全体のクラス */
+.overall {
+    width: 100%;
+    height: 100%;
+}
+
+/* ヘッダー部分 */
+header {
+    width: 100%;
+    height: 50px;
+    padding: 0 50px;
+    background-color: #3f3e3e;
+}
+
+header h1 {
+    color: white;
+    font-size: 32px;
+}
+
+/* 画面中央部のクラス */
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-items: center;
+}
+
+.main-bgi {
+    background-image: url(./img/bgi-01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+}
+
+/* 画面中央の左側 */
+.mainvisual {
+    width: 80%;
+    height: auto;
+    padding: 50px 0 50px 50px;
+}
+
+.message {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.message h1 {
+    width: 65%;
+    color: white;
+    font-size: 22px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background-color: #3f3e3e;
+    margin-bottom: 30px;
+}
+
+.messagetext {
+    font-size: 14px;
+    width: 100px;
+}
+
+.message input[type="text"] {
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.message textarea {
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.messagebutton {
+    text-align: right;
+}
+
+.message input[type="submit"] {
+    font-size: 13px;
+    padding: 1px 20px;
+    border-radius: 7px;
+    background-color: #659beb;
+}
+
+.outputbox {
+    width: 65%;
+    height: auto;
+    overflow-wrap: break-word;
+}
+
+.remarks {
+    margin: 15px 0;
+    padding: 5px 0 5px 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.remarks h1 {
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+.remarks p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pagenation {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.pagenation li {
+    margin: 0 5px;
+    text-align: center;
+}
+
+/* 画面中央の右側 */
+.sidemenus {
+    width: 20%;
+    height: 100%;
+    margin: 150px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    width: 80%;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    padding-bottom: 30px;
+    position: sticky;
+    top: 0px;
+}
+
+.menu h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: white;
+    background-color: #3f3e3e;
+}
+
+.menu h2 {
+    text-align: center;
+    font-size: 16px;
+    margin: 15px 0;
+    color: white;
+    background-color: #3f3e3e;
+}
+
+.menu li {
+    font-size: 14px;
+    padding: 5px 0 5px 15px;
+    background-color: white;
+}
+
+.menu li:hover {
+    background-color: rgba(0, 0, 172, 0.404);
+}
+
+.sample-bg {
+    margin-top: 20px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.menuimg {
+    width: auto;
+    height: 50px;
+    margin: 1px;
+}
+
+/* フッター部分 */
+footer {
+    width: 100%;
+    height: 50px;
+    background-color: #3f3e3e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

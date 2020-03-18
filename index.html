@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./reset.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="overall">
+    <header>
+        <h1>課題提出用サイト</h1>
+    </header>
+    <div class="main main-bgi">
+        <div class="mainvisual">
+            <div class="message">
+            <h1>ぼくの作業日記</h1>
+            <table>
+                <tr>
+                    <td class="messagetext ver-middle">名前</td>
+                    <td><input type="text" id="username"></td>
+                </tr>
+                <tr>
+                    <td class="messagetext ver-top">コメント</td>
+                    <td><textarea id="comment"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><div class="messagebutton"><input type="submit" id="send"></div></td>
+                </tr>
+            </table>
+            </div>
+            <div class="outputbox" id="output">
+                <!-- メッセージを吐き出す場所 -->
+                <ul class="pagenation">
+                    <li class="prev"><a href="#" class="link peger">≪</a></li>
+                    <li><a href="#" class="link peger">1</a></li>
+                    <li><a href="#" class="link peger">2</a></li>
+                    <li><a href="#" class="link peger">3</a></li>
+                    <li class="next"><a href="#" class="link peger">≫</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidemenus">
+            <div class="menu">
+                <h1>MENU</h1>
+                <li><a href="#" class="link top">TOP PAGE</a></li>
+                <h2>好きな背景に変えられます</h2>
+                <li><a href="#" class="link bgc" id="return-bgi">デフォルト</a></li>
+                <li><a href="#" class="link bgc" id="change-bgi01">油絵</a></li>
+                <li><a href="#" class="link bgc" id="change-bgi02">落下</a></li>
+                <li><a href="#" class="link bgc" id="change-bgi03">山小屋</a></li>
+                <li><a href="#" class="link bgc" id="change-bgi04">砂浜</a></li>
+                <div class="sample-bg">
+                    <a href="#" class="link bgc" id="return-bgi"><img src="./img/bgi-01.jpg" alt="#" class="menuimg"></a>
+                    <a href="#" class="link bgc" id="change-bgi01"><img src="./img/bgi-02.jpg" alt="#" class="menuimg"></a>
+                    <a href="#" class="link bgc" id="change-bgi02"><img src="./img/bgi-03.jpg" alt="#" class="menuimg"></a>
+                    <a href="#" class="link bgc" id="change-bgi03"><img src="./img/bgi-04.jpg" alt="#" class="menuimg"></a>
+                    <a href="#" class="link bgc" id="change-bgi04"><img src="./img/bgi-05.jpg" alt="#" class="menuimg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <a href="#" class="link btn top">ページ上部へ戻る</a>
+    </footer>
+</div>
+
+
+<script type="text/javascript" src="./main.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDjNC9e2do2fzkvYPllFMRx933TH5m6hLg",
+  authDomain: "creation001-3e622.firebaseapp.com",
+  databaseURL: "https://creation001-3e622.firebaseio.com",
+  projectId: "creation001-3e622",
+  storageBucket: "creation001-3e622.appspot.com",
+  messagingSenderId: "142076773363",
+  appId: "1:142076773363:web:6aeb35cf919d1be4cdc886"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// FirebaseのDB使用のコード貼り付け
+const newPostRef = firebase.database().ref();
+
+// クリックイベント
+$("#send").on("click", function () {
+    var name = $('#username').val();
+    var comment = $('#comment').val();
+    if (name == '' && comment == '') {
+        alert('何も入力されていません');
+    } else if (name == '') {
+        alert('名前を入力してください');
+    } else if (comment == '') {
+        alert('コメントを入力してください');
+    } else {
+        newPostRef.push({
+        username: $('#username').val(),
+        comment: $('#comment').val()
+    })
+        $('#username').val();
+        $('#comment').val();
+    }
+});
+
+// 受信処理
+newPostRef.on('child_added', function(data) {
+  let v = data.val();
+  let str = `<div class="remarks opa"><h1>${v.username}</h1><p>${v.comment}</p></div>`;
+  $('#output').prepend(str);
+})
+
+// keydownのときに送信する
+$('#comment').on('keydown', function (e) {
+    var name = $('#username').val();
+    var comment = $('#comment').val();
+    console.log(e.keyCode)
+    if (e.keyCode === 13 && name != '' && comment != '') {
+    newPostRef.push({
+        username: $('#username').val(),
+        comment: $('#comment').val()
+    })
+    $('#username').val();
+    $('#comment').val();
+    }
+});
+
+</script>
+</body>
+</html>
